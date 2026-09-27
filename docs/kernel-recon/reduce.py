@@ -36,16 +36,28 @@ PATCH_DIR = HERE / "../../board/mister/de10nano/linux-patches"
 # "the reason lives in records/", which is keyed on fork SHAs these patches do not have. So
 # each entry MUST say where its reason does live, or it is just a silencer. And the invariant
 # runs in reverse too (see below): an entry naming a patch that no longer exists is itself
-# reported, because the day 6.18.y repairs itself and 0051 is deleted, this list has to go with
-# it -- a stale exemption would quietly re-open the hole it was opened for.
+# reported: when a patch is deleted, its entry has to go with it -- a stale exemption would
+# quietly re-open the hole it was opened for (0051 went that way on 2026-09-26).
 NO_FORK_ORIGIN = {
-    "0051-perf-revert-no-slang-al-addr-stub-mismatch.patch":
-        "A linux-6.18.y stable defect, not a MiSTer fork commit: 6.18.52 cherry-picked "
-        "e97bd4417010 (\"perf annotate: Fix build with NO_SLANG=1\") without "
-        "ad83f3b7155db28e, the commit it repairs, which breaks every NO_SLANG=1 perf build -- "
-        "the only kind this image does. Reason, evidence and the delete-never-re-anchor rule "
-        "live in the patch's own header and in docs/patch-provenance.md. Added 2026-09-14 "
-        "(91e3fe6).",
+    # 0051 (the 6.18.52 perf revert) retired 2026-09-26: 6.18.54 reverted the same commit itself.
+    **{f"{p}.patch": "Original dwc2 host work for #205, not a fork commit. Reason, measurements "
+                     "and provenance live in docs/dwc2-usb-irq.md and docs/patch-provenance.md. "
+                     "Added 2026-09-25."
+       for p in (
+           "0054-dwc2-ddma-keep-frame-list-while-periodic-qhs-remain",
+           "0055-dwc2-ddma-frame-list-unmap-direction",
+           "0056-dwc2-read-hfnum-for-current-frame",
+           "0057-dwc2-ddma-no-sof-unmask-for-periodic-qhs",
+           "0058-dwc2-host-single-irq-action",
+           "0059-dwc2-fs-ddma-param",
+           "0060-dwc2-host-keep-periodic-qh-cadence",
+           "0061-dwc2-host-debugfs-hcd-stats",
+           "0062-dwc2-host-sof-holdoff-in-hardirq",
+           "0063-dwc2-ddma-desc-list-bidirectional",
+           "0064-dwc2-ddma-giveback-on-dequeue-halt",
+           "0065-dwc2-ddma-halt-before-freeing-desc-list",
+           "0066-dwc2-ddma-keep-xfercompl-unmasked",
+       )},
 }
 
 # "carried-upstream-only" is distinct from "carried": the commit is NOT applied to the

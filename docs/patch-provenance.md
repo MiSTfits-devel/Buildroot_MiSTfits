@@ -1724,7 +1724,15 @@ inventory, the build result, the USB-ID overlap test, and the re-open trigger:
 `docs/kernel-recon/fork-sync-2026-09/memo-Q9-aic8800.md`. Record:
 `docs/kernel-recon/records/c129b0fac34ad5d613bbec3f59d6036775e41c83.json`.
 
-### `0051` — the first REVERT, added 2026-09-14
+### `0051` — the first REVERT, added 2026-09-14, **RETIRED 2026-09-26**
+
+**Retired 2026-09-26 — slot intentionally empty.** `linux-6.18.54` reverted the same commit
+itself: stable `8c3b2bf7f39c` (Sasha Levin, "Revert "perf annotate: Fix build with
+NO_SLANG=1""). Pristine `v6.18.54`'s `tools/perf/util/hist.h` has no `al_addr` at all, and at
+`-F0` the patch reports "Reversed (or previously applied) patch detected", which failed the
+6.18.54 bump's build at `linux-6.18.54/.stamp_patched` (PR #208). Deleted from `linux-patches/`
+exactly as planned, and its `NO_FORK_ORIGIN` entry left `docs/kernel-recon/reduce.py` with it.
+The rest of this section is kept as written.
 
 `0047` was carried because mainline had a change and our stable line did not (until `6.18.53`
 took it and the patch retired). `0051` is the
