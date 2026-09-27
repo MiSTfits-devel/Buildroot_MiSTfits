@@ -32,7 +32,8 @@
 #   DIFFERENT solution to the same problem. Retires from linux-patches/
 #   outright the moment the 6.18.y pin leaves 6.18.y, as 0047 did on
 #   2026-09-21.
-#   0051-perf-revert-no-slang-al-addr-stub-mismatch.patch, added 2026-09-14,
+#   0051-perf-revert-no-slang-al-addr-stub-mismatch.patch (RETIRED 2026-09-26:
+#   6.18.54 reverted the same commit itself), added 2026-09-14,
 #   which reverts a stable commit (e97bd4417010, "perf annotate: Fix build
 #   with NO_SLANG=1") that 6.18.52 cherry-picked WITHOUT the commit it
 #   repairs, ad83f3b7155db28e ("perf c2c annotate: Start from the

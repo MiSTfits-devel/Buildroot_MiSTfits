@@ -2971,7 +2971,8 @@ pristine v7.2.6, 3 of 5 hunks FAIL, and the two that succeed would leave a
 broken tree, so -F0 stopping the build is the only reason the exclusion is
 safe (the series header has the full write-up). All three go away on their
 own the day the stock pin leaves 6.18.y, and 0051 also goes away the day
-6.18.y repairs itself.
+6.18.y repairs itself. (It did: 6.18.54 reverted the same commit as stable
+8c3b2bf7f39c, and 0051 was deleted on 2026-09-26.)
 Nothing else is dropped:
 all 41 entries (the other 37 shared + the four beta-local
 patches 0043/0044/0045 — the UIO set — and 0046, the ramoops crash-record
